@@ -26,6 +26,11 @@ try:
 except ImportError:
     pyswarm = None
 
+try:
+    import cma
+except ImportError:
+    pyswarm = None
+
 EXITFLAG_LOADED_FROM_FILE = -99
 
 logger = logging.getLogger(__name__)
@@ -555,3 +560,9 @@ class PyswarmOptimizer(Optimizer):
 
     def is_least_squares(self):
         return False
+
+
+class CmaOptimizer(Optimizer):
+    """
+    Global optimization using cma-es.
+    """
